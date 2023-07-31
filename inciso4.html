@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Parte 4</title>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="jumbotron text-center">
+      <h1 class="display-4">¡Hola Mundo!</h1>
+	  <p> Ver consola :)  </p>
+	  <button id="btnObtenerJson">Obtener JSON</button>
+    </div>
+  </div>
+
+ <script>
+    document.getElementById("btnObtenerJson").addEventListener("click", function() {
+      const url = "https://brokertest.1777.com.gt/DMZCAD/api/Icad/GetMenu?empresa=CAMPGUA&id=CBOPOLLO";
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          console.log("JSON original:");
+          console.log(data);
+
+          // Cambiar el valor "titulo" a mayúsculas (4.1)
+          data.mensaje.forEach(menu => {
+            menu.productos.forEach(producto => {
+              producto.titulo = producto.titulo.toUpperCase();
+			  //Cambiar de decimal a entero el producto (4.3)
+			  producto.precio = parseInt(producto.precio);
+			  
+            });
+
+            // Cambiar las fechas ValidoDel y ValidoAl al formato "dd/MM/yyyy" (4.2)
+            menu.productos.forEach(producto => {
+              producto.validoDel = formatDate(producto.validoDel);
+              producto.validoAl = formatDate(producto.validoAl);
+			  
+			  //Cambiar 
+			  producto.horaDesde = formatTime(producto.horaDesde);
+              producto.horaHasta = formatTime(producto.horaHasta);
+            });
+          });
+
+          console.log("JSON modificado:");
+          console.log(data);
+        })
+        .catch(error => console.error("Error al obtener el JSON:", error));
+    });
+
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      const day = date.getDate().toString().padStart(2, '0');
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
+    }
+	
+	function formatTime(timeString) {
+      const time = new Date(timeString);
+      const minutes = time.getMinutes().toString().padStart(2, '0');
+      const seconds = time.getSeconds().toString().padStart(2, '0');
+      return `${minutes}:${seconds}`;
+    }
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+<!--   ANEXOS
+https://learn.microsoft.com/es-es/dotnet/standard/serialization/system-text-json/migrate-from-newtonsoft?pivots=dotnet-7-0
+https://es.stackoverflow.com/questions/142621/cambiar-el-formato-de-fecha-y-hora-en-antes-de-serealizar-json
+https://es.stackoverflow.com/questions/8411/pasar-fecha-y-hora-formato-json-php-a-java?rq=1
+https://desarrolloweb.com/faq/convertir-segundos-en-horas-minutos-y-segundos-en-javascript
+
+
+Notas
+
+No se encontro decimales en precio (4)
+Horas 00:00 (3)
+(5) no realizado
+  >   

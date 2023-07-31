@@ -1,0 +1,31 @@
+Explicación
+Inciso 1) Evaluación de capacidad lógica y razonamiento (Máximo de 30 minutos)
+
+En este se utilizó un proyecto de C# en consola, 
+en el cual esta paso a paso la forma en la que se trabajo
+1) Solicitando la cadena de texto
+2) Separando los numeros de la cadena de texto
+3) Separando los numeros primos de la cadena de texto
+4) Ordenando los numeros primos de mayor a menor 
+
+
+
+Inciso 2) Evaluación de conocimiento en bases de datos (Máximo de 45 minutos)
+En este caso se agrego una nueva tabla para poder solicitar mas de un producto por pedido, asi mismo las consultas (3 y 4), el inciso 5 no realizado por falta de tiempo
+
+
+Inciso 3) Evaluación de conocimiento en C# (Máximo de 45 minutos)
+En este se utilizó un proyecto de C# . net en blanco,
+en el cual se realizo la conexion a la base de datos de SQL Server, asi mismo la pagina principal es el ABC de la tabla Producto
+(en una interfaz sencilla la cual hay que colocar en texto el codigo del producto mostrado en la tabla en la parte inferior
+y si nueva categoria ALTA, BAJA, CAMBIO).
+
+
+Inciso 4) Evaluación de conocimiento en Servicios (Máximo de 45 minutos)
+Se eligio el uso de javascript para obtener el json de la pagina mencionada "https://brokertest.1777.com.gt/DMZCAD/api/Icad/GetMenu?empresa=CAMPGUA&
+id=CBOPOLLO", este con una pagina en html y se tiene que dar clic en el unico boton, tambien se tiene que inspeccionar la pagina e ir
+a la opcion de consola para ver el json original y el json modificado
+
+
+LINK de el codigo fuente:
+https://drive.google.com/drive/folders/1KbOUw0rhoTt7J81VURViSa0qTSMaZj8k?usp=sharing
